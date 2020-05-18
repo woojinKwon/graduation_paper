@@ -1,0 +1,15 @@
+학문적인 가치[업적]
+
+1. 자율주행 시스템에서 승차감은 중요한 요소이다.
+(--> 횡방향 가속도(횡력) : .4 ~ .5g) : 0.05g 이상을 안만들기 위한 노력들?? :
+( --> Look up Table 설정 [SWA, Vx, Ay]
+
+% 2. 타겟 선정: 왼쪽타이어 --> 차량의 상대위치 정보를 바탕으로 "rectangle shape modeling" 
+
+% 3. Prediction : Constant : 한계점 
+
+4. Path Planning : Sigmoid 함수로 진행 : 의미 Vy, Ay 녹여서 승차감 최대치를 넘지 않게끔 설정  
+
+5.  Control : 상황에 따라 Purepursuit 제어와 PID제어를 복합적으로 사용하여 Desired Path 추종성능을 향상 시킴
+
+
