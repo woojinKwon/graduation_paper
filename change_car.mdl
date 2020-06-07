@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.279"
+    ComputedModelVersion    "1.282"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -51,7 +51,7 @@ Model {
       $ObjectID		      3
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-7.0, 0.0, 974.0, 1047.0]
+      Location		      [285.0, 0.0, 974.0, 1047.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		4
@@ -78,7 +78,7 @@ Model {
 	  LoadSaveID		  "202"
 	  Extents		  [924.0, 865.0]
 	  ZoomFactor		  [0.67622641509433967]
-	  Offset		  [-45.703125, -431.07868303571422]
+	  Offset		  [-45.703125000000114, -431.07868303571422]
 	}
 	Object {
 	  $ObjectID		  7
@@ -87,7 +87,7 @@ Model {
 	  LoadSaveID		  "0"
 	  Extents		  [924.0, 865.0]
 	  ZoomFactor		  [0.564345571121379]
-	  Offset		  [-24.8074951171875, -139.87440272739957]
+	  Offset		  [9.7699626167013776e-15, 92.690778616588815]
 	}
 	PropName		"EditorsInfo"
       }
@@ -122,9 +122,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "STU"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jun 03 23:31:58 2020"
-  RTWModifiedTimeStamp	  513127918
-  ModelVersionFormat	  "1.%<AutoIncrement:279>"
+  LastModifiedDate	  "Sun Jun 07 17:48:25 2020"
+  RTWModifiedTimeStamp	  513447981
+  ModelVersionFormat	  "1.%<AutoIncrement:282>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1173,7 +1173,7 @@ Model {
   }
   System {
     Name		    "change_car"
-    Location		    [-7, 0, 967, 1047]
+    Location		    [285, 0, 1259, 1047]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1637,7 +1637,7 @@ Model {
       Variant		      off
       System {
 	Name			"Predicton"
-	Location		[-8, -8, 1928, 1048]
+	Location		[285, 0, 1259, 1047]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2115,7 +2115,7 @@ Model {
       Variant		      off
       System {
 	Name			"Pure Pusuit"
-	Location		[-7, 0, 967, 1047]
+	Location		[285, 0, 1259, 1047]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4193,7 +4193,7 @@ Model {
       Variant		      off
       System {
 	Name			"path planning"
-	Location		[-7, 0, 967, 1047]
+	Location		[285, 0, 1259, 1047]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -5623,6 +5623,9 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 34 0 0]
     viewObj		    33
+    visible		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    14
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -6011,7 +6014,7 @@ Stateflow {
       isEML		      1
       script		      "function [L,k] = path_planning(mode,Safe_Return)\n\n\n\nif mode == 1 % Inlane\n    if Safe_Return"
       " == 2 \n        \n        L= 0;\n        k = 0.5;\n    else\n        L= 1.8;\n        k = 0.63;\n        \n    e"
-      "nd\nelseif mode == 2 % Lane Change\n    L= 7.2;\n    k =0.83;\nelse\n    L=0;\n    k = 0;\nend\n\n\n\nend\n"
+      "nd\nelseif mode == 2 % Lane Change\n    L= 7.2;\n    k =1;\nelse\n    L=0;\n    k = 0;\nend\n\n\n\nend\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
@@ -6188,11 +6191,11 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function [steer,lateral_error,local_y] = fcn(L,k,E_Gx, E_Gy, Ego_Gx,Ego_Gy)\n    L_v = 2.91;\n   "
-      " k_p = 0.56;\n    \n    if L == 0 && k == 0\n        steer = 0;\n        lateral_error = 0;\n        local_y = 0"
-      ";\n    else\n        local_x = Ego_Gx - E_Gx;\n        local_y = Ego_Gy - E_Gy;\n        l_d = k_p * 90/3.6;\n\n"
-      "       x_pos = local_x + l_d;\n       lateral_error =local_y - L / (1+exp(-k*local_x)) + L/2;\n       y_pos = L/"
-      "(1+exp(-k*x_pos)) - L/2;\n       e_ld = y_pos - local_y;\n       l_d = sqrt((x_pos - local_x)^2 + (y_pos - local"
-      "_y)^2);\n       sin_alpha = e_ld / l_d;\n       steer = atan(2*L_v*sin_alpha/l_d)/pi*180;\n\n    end\n\n\nend"
+      " k_p = 0.3;\n    \n    if L == 0 && k == 0\n        steer = 0;\n        lateral_error = 0;\n        local_y = 0;"
+      "\n    else\n        local_x = Ego_Gx - E_Gx;\n        local_y = Ego_Gy - E_Gy;\n        l_d = k_p * 90/3.6;\n\n "
+      "      x_pos = local_x + l_d;\n       lateral_error =local_y - L / (1+exp(-k*local_x)) + L/2;\n       y_pos = L/("
+      "1+exp(-k*x_pos)) - L/2;\n       e_ld = y_pos - local_y;\n       l_d = sqrt((x_pos - local_x)^2 + (y_pos - local_"
+      "y)^2);\n       sin_alpha = e_ld / l_d;\n       steer = atan(2*L_v*sin_alpha/l_d)/pi*180;\n\n    end\n\n\nend"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
